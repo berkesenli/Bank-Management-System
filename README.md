@@ -1,4 +1,4 @@
-his is a basic console application written in C that simulates the account creation and sign-in process for a banking system. It includes input validation and saves the entered user data to a local text file on the Windows operating system.
+This is a basic console application written in C that simulates the account creation and sign-in process for a banking system. It includes input validation and saves the entered user data to a local text file on the Windows operating system.
 
 🌟 Features
 
