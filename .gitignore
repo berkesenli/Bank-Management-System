@@ -1,55 +1,21 @@
-# Prerequisites
-*.d
+Ignore build outputs, object files, and executables.
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+Visual Studio / Windows
 
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
 *.exe
+*.obj
+*.o
 *.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+*.dll
+*.lib
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+Local file where user data is saved (should not be versioned for security)
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+userdata.txt
 
-# debug information files
-*.dwo
+Various IDE/Editor files
+
+.vscode/
+.idea/
+*~
+*.swp
