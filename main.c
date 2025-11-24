@@ -1,21 +1,30 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
 // Function to save user information to file
 void saveUserData(const char* firstName, const char* lastName, const char* phoneNumber, const char* email,
 	const char* city, const char* district, const char* street, const char* buildingNumber,
 	const char* apartmentNumber, const char* idnumber, const char* password) {
 
-	// Open the file in write mode on the user's Desktop.
-	// NOTE: You must manually replace 'YOUR_USERNAME' with your actual Windows username.
-	const char* desktop_path = "C:\\Users\\YOUR_USERNAME\\Desktop\\userdata.txt";
-	FILE* file = fopen(desktop_path, "w");
+	char full_path[512];
+	const char* appdata_path = getenv("LOCALAPPDATA");
+
+	if (appdata_path == NULL) {
+		printf("\n!!! ERROR: LOCALAPPDATA environment variable not found. Cannot save file. !!!\n");
+		return;
+	}
+
+	// Constructing the full path to save the file in the users AppData\Local directory
+    sprintf(full_path, "%s\\BankSystemData.txt", appdata_path);
+
+	// Open the file in write mode
+	FILE* file = fopen(full_path, "w");
 
 	if (file == NULL) {
 		// Error of opening file
-		printf("\n!!! ERROR: Failed to open or create the record file (%s). Make sure you replaced 'YOUR_USERNAME' and have write permissions. !!!\n", desktop_path);
+		printf("\n!!! ERROR: Failed to open or create the record file (%s). Make sure the path is correct and you have write permissions. !!!\n", full_path);
 		return;
 	}
 
@@ -37,7 +46,7 @@ void saveUserData(const char* firstName, const char* lastName, const char* phone
 
 	// Close the file
 	fclose(file);
-	printf("\n*** User Information successfully saved to the file %s. ***\n", desktop_path);
+	printf("\n*** User Information successfully saved to the file %s. ***\n", full_path);
 }
 
 int main() {
@@ -69,11 +78,11 @@ int main() {
 
 	// Main Menu
 	printf("\n");
-	printf("        WELCOME TO BANK ACCOUNT SYSTEM\n\n");
-	printf("        ******************************\n\n");
-	printf("        (1) CREATE A BANK ACCOUNT\n");
-	printf("        (2) ALREADY A USER? SIGN IN\n");
-	printf("        (3) EXIT\n\n");
+	printf("        WELCOME TO BANK ACCOUNT SYSTEM\n\n");
+	printf("        ******************************\n\n");
+	printf("        (1) CREATE A BANK ACCOUNT\n");
+	printf("        (2) ALREADY A USER? SIGN IN\n");
+	printf("        (3) EXIT\n\n");
 	printf("Enter your choice: ");
 	scanf("%d", &choice);
 
