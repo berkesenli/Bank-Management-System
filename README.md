@@ -1,4 +1,3 @@
-This is a basic console application in C that allows users to create a bank account, sign in using phone number or ID Number, validates inputs like phone, email, ID Number, and password, and saves all user information to a local text file in the Windows LOCALAPPDATA directory for future sessions.
 
 ⚙ Features
 
