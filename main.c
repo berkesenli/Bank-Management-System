@@ -65,15 +65,16 @@ int loadUserData(char* firstName, char* lastName, char* phoneNumber, char* email
 
     char temp[256];
 
-    fscanf(file, "%[^"]\n", temp); // read first line dummy
+    
+    fscanf(file, "%[^\n]\n", temp); // read first line dummy
     fscanf(file, "FirstName: %s\n", firstName);
     fscanf(file, "LastName: %s\n", lastName);
     fscanf(file, "Phone Number: +90 %s\n", phoneNumber);
     fscanf(file, "E-mail adress: %s\n", email);
     fscanf(file, "ID Number: %s\n", idnumber);
     fscanf(file, "Password: %s\n", password);
-    fscanf(file, "%[^"]\n", temp); // skip line
-    fscanf(file, "%[^"]\n", temp); // skip line
+    fscanf(file, "\n%[^\n]\n", temp); // skip line
+    fscanf(file, "%[^\n]\n", temp); // skip line
     fscanf(file, "City: %s\n", city);
     fscanf(file, "District: %s\n", district);
     fscanf(file, "Street: %s\n", street);
@@ -197,7 +198,7 @@ int main() {
 
         while (minussignlocation == NULL && questionmarklocation == NULL && asterisklocation == NULL && exclamationmarklocation == NULL)
         {
-            printf("Your password must have at least ONE special character (*,!,-,?)");
+            printf("Your password must have at least ONE special character (*,!,-,?): ");
             scanf("%s", password);
             minussignlocation = strchr(password, '-');
             questionmarklocation = strchr(password, '?');
@@ -207,6 +208,8 @@ int main() {
 
         saveUserData(firstName, lastName, phoneNumber, email, city, district, street,
             buildingNumber, apartmentNumber, idnumber, password);
+        
+        loaded = 1;
 
         printf("-----Your account has been succesfuly created-----\n");
         printf("Press (1) for signing in - Press (2) for exit: ");
@@ -278,8 +281,9 @@ int main() {
 
             goto endmenu;
         }
+        break;
     case 3:
-        return 0; break;
+        return 0;
     }
 
 endmenu:
